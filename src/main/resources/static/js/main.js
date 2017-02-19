@@ -3,7 +3,7 @@
  */
 $(document).ready(function(){
     $("#generateNextPrime").click(function() {
-        var previousPrime = $("#primeNumber").text();
+        var previousPrime = $("#nextPrimeNumber").text();
         console.log("Previous prime number is: ", previousPrime);
         generateNextPrimeNo(previousPrime);
     });
@@ -17,7 +17,8 @@ function generateNextPrimeNo(previousPrime) {
         dataType: 'json',
         success: function(data) {
             console.log("Next prime number is: ", data);
-            $("#primeNumber").text(data);
+            $("#previousPrimeNumber").text(previousPrime);
+            $("#nextPrimeNumber").text(data);
         },
         error: function(error) {
             console.log("ERROR: ", error);
