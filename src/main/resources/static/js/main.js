@@ -10,15 +10,18 @@ $(document).ready(function(){
         generateNextPrimeNo(previousPrime);
     });
 
+    //START counting for issuing a new session
     var countIdleInterval = setInterval(incrementTimer, 60000); // 1 minute
 
-    //Zero the idle timer on mouse movement.
+    //Reset the idle timer on mouse movement.
     $(this).mousemove(function (e) {
         idleTime = 0;
     });
+    //Reset the idle timer on key press.
     $(this).keypress(function (e) {
         idleTime = 0;
     });
+    //END counting for issuing a new session
 });
 
 function generateNextPrimeNo(previousPrime) {
@@ -38,6 +41,7 @@ function generateNextPrimeNo(previousPrime) {
     })
 }
 
+//Increment time and when time reaches 3 minutes issue new session
 function incrementTimer() {
     idleTime = idleTime + 1;
     if (idleTime > 3) { // 3 minutes
