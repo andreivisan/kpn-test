@@ -22,6 +22,10 @@ public class KpnController {
     @RequestMapping(value = "/nextPrime/{previousPrime}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public String nextPrime(@PathVariable String previousPrime) {
+        return generateNextPrime(previousPrime);
+    }
+
+    public String generateNextPrime(String previousPrime) {
         return String.valueOf(new BigInteger(previousPrime).nextProbablePrime());
     }
 
