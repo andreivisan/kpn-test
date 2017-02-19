@@ -1,4 +1,8 @@
+body {
+    text-align: center;
+}
+
 .generate-prime-btn-position {
-    display: block !important;
+    display: inline-block;
     margin: 10% auto;
 }

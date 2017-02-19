@@ -2,7 +2,10 @@ package io.programminglife.kpn;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.math.BigInteger;
 import java.util.Map;
 
 /**
@@ -12,8 +15,14 @@ import java.util.Map;
 public class KpnController {
 
     @RequestMapping("/")
-    public String index(Map<String, Object> model) {
+    public String index() {
         return "main";
+    }
+
+    @RequestMapping(value = "/nextPrime", method = RequestMethod.GET)
+    @ResponseBody
+    public String nextPrime() {
+        return String.valueOf(new BigInteger("2000000000040").nextProbablePrime());
     }
 
 }
