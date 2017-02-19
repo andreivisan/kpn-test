@@ -1,12 +1,12 @@
 package io.programminglife.kpn;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.math.BigInteger;
-import java.util.Map;
 
 /**
  * Created by andreivisan on 2/19/17.
@@ -19,10 +19,10 @@ public class KpnController {
         return "main";
     }
 
-    @RequestMapping(value = "/nextPrime", method = RequestMethod.GET)
+    @RequestMapping(value = "/nextPrime/{previousPrime}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public String nextPrime() {
-        return String.valueOf(new BigInteger("2000000000040").nextProbablePrime());
+    public String nextPrime(@PathVariable String previousPrime) {
+        return String.valueOf(new BigInteger(previousPrime).nextProbablePrime());
     }
 
 }
